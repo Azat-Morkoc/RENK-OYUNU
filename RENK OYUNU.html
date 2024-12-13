@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script>
+
+
+       
+        function timer500() {
+            setInterval(yeniKutuEkle, 500);
+        }
+       
+        var sayac2 = 0;
+        var puanim = 0;
+
+        function kutuSil(kutu)
+        {
+            puanim += 10;
+            document.getElementById("puan").innerHTML = puanim;
+            kutu.remove();
+        }
+
+
+        function yeniKutuEkle() {
+
+
+            sayac2 = Math.random() * 950;      //yukarıda 0 olarak tanımlanmış sayaç2 değişkenine 0 ile 1000 arasında bir değer ataması yapar
+            // ataan bu değer sarıkutu nunn içine eklenen kırmızıkutu ların marginleft i olur
+            // bu for döngüsü ile tüm kırmızıkutuların margintop değeri her bir saniyede 20px arttırılmasını sağlar
+
+            for (var i = 0; i < document.getElementsByClassName("kirmiziKutu").length; i++) {
+                document.getElementsByClassName("kirmiziKutu")[i].style.marginTop = (parseInt(document.getElementsByClassName("kirmiziKutu")[i].style.marginTop) + 20) + "px";
+
+                if (parseInt(document.getElementsByClassName("kirmiziKutu")[i].style.marginTop) > 450) {  //bu if yapısı is3e kırmızı kutuların margintoplarını kontrol eder
+                    alert("oyun bitti");                        // ve 450 den büyük varsa oyunu bitirir
+                }
+            }
+
+           // aşağıdaki kısım ile de fonksiyon her çalıştığında yeni bir kırmızı kutu ekler
+            //onclick olayında  this.remove üzerine tıklandığında silinmesini sağlar
+            var renkDizisi = ["black","red", "green", "white", "purple", "blue", "pink"];
+            var renkSayisi = parseInt(Math.random() * 7);
+            document.getElementById("sariKutu").innerHTML += "<div  class ='kirmiziKutu' onclick='kutuSil(this)' style='background-color:"+renkDizisi[renkSayisi]+"; margin-top:0px; margin-left:" + sayac2 + "px; position:fixed; width:50px; height:50px;'></div>";
+
+        }
+    </script>
+</head>
+<body onload="timer500()">
+    <form id="form1" runat="server">puan<br/><div id="puan">0</div><div id="sariKutu" style="width:1000px; height:500px; background-color:yellow;"> </div> </form>
+</body>
+</html>
