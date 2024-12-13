@@ -1,2 +1,2 @@
 # RENK-OYUNU
-Renk Oyunu'nu oluştururken programlama dillerinden (JS,HTML) yararlandım.
+Renk Oyunu'nu oluştururken programlama dillerinden (HTML,JS) yararlandım.
